@@ -1,0 +1,23 @@
+{
+  "name": "cubacmg-link-x-link",
+  "version": "1.0.0",
+  "description": "Plataforma de compartir enlaces de WhatsApp con sistema de registro y directorio de usuarios",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "dev": "python -m http.server 8000"
+  },
+  "keywords": [
+    "whatsapp",
+    "links",
+    "social",
+    "directory",
+    "share"
+  ],
+  "author": "Marco Sanchez",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/username/cubacmg-link-x-link"
+  }
+}

@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio | Desarrollador Creativo</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dark-mode">
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader-circle"></div>
+            <div class="loader-circle"></div>
+            <div class="loader-circle"></div>
+        </div>
+        <p class="loader-text">Cargando...</p>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Particle Background -->
+    <canvas id="particles"></canvas>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress"></div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" aria-label="Volver arriba">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    <nav class="navbar">
+        <div class="logo">CubaCMG<br><span class="logo-subtitle">link x link</span></div>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#sobre-mi">Sobre Mí</a></li>
+            <li><a href="#registro">Registro</a></li>
+            <li><a href="#directorio">Directorio</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="theme-toggle" aria-label="Cambiar tema">
+                <i class="fas fa-moon"></i>
+            </button>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                <span>Disponible para proyectos</span>
+            </div>
+            <h1 class="glitch" data-text="Hola, Soy Desarrollador">Hola, Soy Desarrollador</h1>
+            <p class="hero-subtitle"><span class="typing-text"></span></p>
+            <div class="hero-buttons">
+                <a href="#proyectos" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i> Ver Proyectos
+                </a>
+                <a href="#contacto" class="btn btn-secondary">
+                    <i class="fas fa-envelope"></i> Contactar
+                </a>
+                <a href="#" class="btn btn-glass">
+                    <i class="fas fa-download"></i> CV
+                </a>
+            </div>
+            <div class="hero-social">
+                <a href="#" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
+                <div class="shape shape-5"></div>
+            </div>
+            <div class="hero-3d-element">
+                <div class="cube">
+                    <div class="cube-face cube-front"></div>
+                    <div class="cube-face cube-back"></div>
+                    <div class="cube-face cube-right"></div>
+                    <div class="cube-face cube-left"></div>
+                    <div class="cube-face cube-top"></div>
+                    <div class="cube-face cube-bottom"></div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <p>Scroll</p>
+        </div>
+    </section>
+
+    <section id="sobre-mi" class="about">
+        <div class="container">
+            <h2 class="section-title">Sobre <span class="neon-text">Mí</span></h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="image-wrapper">
+                        <div class="image-placeholder">
+                            <div class="glow-circle"></div>
+                            <div class="image-overlay">
+                                <div class="overlay-content">
+                                    <i class="fas fa-camera"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="floating-badge">
+                            <i class="fas fa-code"></i>
+                            <span>Developer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h3>Desarrollador Full Stack & Diseñador Creativo</h3>
+                    <p>Soy un desarrollador apasionado por crear soluciones innovadoras y experiencias digitales impactantes. Me especializo en desarrollo web moderno, diseño creativo y tecnologías de vanguardia.</p>
+                    <p>Con años de experiencia en el campo, me mantengo actualizado con las últimas tendencias y mejores prácticas para entregar resultados de alta calidad.</p>
+                    <div class="about-info">
+                        <div class="info-item">
+                            <i class="fas fa-user"></i>
+                            <span>Nombre: Marco Sanchez</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Ubicación: Cuba, Minas, Camagüey</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>Email: msanchez132010@gmail.com</span>
+                        </div>
+                    </div>
+                    <div class="stats">
+                        <div class="stat">
+                            <h3 class="counter" data-target="150">0</h3>
+                            <p>Proyectos</p>
+                            <i class="fas fa-folder-open"></i>
+                        </div>
+                        <div class="stat">
+                            <h3 class="counter" data-target="8">0</h3>
+                            <p>Años Exp.</p>
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="stat">
+                            <h3 class="counter" data-target="95">0</h3>
+                            <p>Clientes</p>
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat">
+                            <h3 class="counter" data-target="25">0</h3>
+                            <p>Premios</p>
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                    </div>
+                    <div class="about-buttons">
+                        <a href="#contacto" class="btn btn-primary">Hablemos</a>
+                        <a href="#" class="btn btn-secondary">Descargar CV</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="services">
+        <div class="container">
+            <h2 class="section-title">Mis <span class="neon-text">Servicios</span></h2>
+            <p class="section-subtitle">Ofrezco soluciones digitales completas para tu negocio</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Desarrollo Web</h3>
+                    <p>Sitios web modernos, rápidos y responsivos con las últimas tecnologías.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Frontend Development</li>
+                        <li><i class="fas fa-check"></i> Backend Development</li>
+                        <li><i class="fas fa-check"></i> API Integration</li>
+                    </ul>
+                    <a href="#contacto" class="service-link">Saber más <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Desarrollo Mobile</h3>
+                    <p>Aplicaciones móviles nativas e híbridas para iOS y Android.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> React Native</li>
+                        <li><i class="fas fa-check"></i> Flutter</li>
+                        <li><i class="fas fa-check"></i> Progressive Web Apps</li>
+                    </ul>
+                    <a href="#contacto" class="service-link">Saber más <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Diseño UI/UX</h3>
+                    <p>Diseños intuitivos y atractivos que mejoran la experiencia del usuario.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Wireframing</li>
+                        <li><i class="fas fa-check"></i> Prototyping</li>
+                        <li><i class="fas fa-check"></i> User Research</li>
+                    </ul>
+                    <a href="#contacto" class="service-link">Saber más <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>SEO & Marketing</h3>
+                    <p>Estrategias de posicionamiento y marketing digital para crecer.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> SEO Optimization</li>
+                        <li><i class="fas fa-check"></i> Content Marketing</li>
+                        <li><i class="fas fa-check"></i> Analytics</li>
+                    </ul>
+                    <a href="#contacto" class="service-link">Saber más <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Cloud & DevOps</h3>
+                    <p>Infraestructura en la nube y automatización de procesos.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> AWS / Azure</li>
+                        <li><i class="fas fa-check"></i> Docker / Kubernetes</li>
+                        <li><i class="fas fa-check"></i> CI/CD Pipelines</li>
+                    </ul>
+                    <a href="#contacto" class="service-link">Saber más <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Consultoría</h3>
+                    <p>Asesoramiento técnico y estratégico para tus proyectos.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Tech Consulting</li>
+                        <li><i class="fas fa-check"></i> Code Review</li>
+                        <li><i class="fas fa-check"></i> Architecture Design</li>
+                    </ul>
+                    <a href="#contacto" class="service-link">Saber más <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="habilidades" class="skills">
+        <div class="container">
+            <h2 class="section-title">Mis <span class="neon-text">Habilidades</span></h2>
+            <p class="section-subtitle">Tecnologías y herramientas que domino</p>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <h3>HTML5 & CSS3</h3>
+                    <p>HTML5, CSS3, SASS, Tailwind</p>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="98%"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-js"></i>
+                    </div>
+                    <h3>JavaScript</h3>
+                    <p>ES6+, TypeScript, jQuery</p>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="95%"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-react"></i>
+                    </div>
+                    <h3>React</h3>
+                    <p>React, Redux, Next.js</p>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="92%"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-vuejs"></i>
+                    </div>
+                    <h3>Vue.js</h3>
+                    <p>Vue, Nuxt.js, Pinia</p>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="88%"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-node-js"></i>
+                    </div>
+                    <h3>Node.js</h3>
+                    <p>Express, NestJS, GraphQL</p>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="90%"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h3>Python</h3>
+                    <p>Django, Flask, FastAPI</p>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="85%"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Bases de Datos</h3>
+                    <p>MySQL, MongoDB, PostgreSQL</p>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="87%"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-figma"></i>
+                    </div>
+                    <h3>Diseño UI/UX</h3>
+                    <p>Figma, Adobe XD, Sketch</p>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="82%"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-docker"></i>
+                    </div>
+                    <h3>DevOps</h3>
+                    <p>Docker, Kubernetes, AWS</p>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="78%"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-git-alt"></i>
+                    </div>
+                    <h3>Git</h3>
+                    <p>Git, GitHub, GitLab</p>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="95%"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile</h3>
+                    <p>React Native, Flutter</p>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="80%"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>CI/CD</h3>
+                    <p>Jenkins, GitHub Actions</p>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="75%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experiencia" class="experience">
+        <div class="container">
+            <h2 class="section-title">Mi <span class="neon-text">Experiencia</span></h2>
+            <p class="section-subtitle">Trayectoria profesional y logros</p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2022 - Presente</span>
+                        <h3>Senior Full Stack Developer</h3>
+                        <h4>TechCorp Inc.</h4>
+                        <p>Liderazgo de equipo de desarrollo, arquitectura de sistemas y implementación de mejores prácticas. Desarrollo de aplicaciones escalables usando React y Node.js.</p>
+                        <div class="timeline-tags">
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>AWS</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2020 - 2022</span>
+                        <h3>Full Stack Developer</h3>
+                        <h4>StartupXYZ</h4>
+                        <p>Desarrollo de productos desde cero, implementación de features complejas y optimización de rendimiento. Colaboración estrecha con diseño y producto.</p>
+                        <div class="timeline-tags">
+                            <span>Vue.js</span>
+                            <span>Python</span>
+                            <span>MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2018 - 2020</span>
+                        <h3>Frontend Developer</h3>
+                        <h4>Agency Digital</h4>
+                        <p>Desarrollo de interfaces de usuario para clientes internacionales. Enfoque en UX y performance. Implementación de diseños pixel-perfect.</p>
+                        <div class="timeline-tags">
+                            <span>JavaScript</span>
+                            <span>SCSS</span>
+                            <span>WordPress</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2016 - 2018</span>
+                        <h3>Junior Developer</h3>
+                        <h4>WebStudio</h4>
+                        <p>Inicio de carrera desarrollando sitios web corporativos y e-commerce. Aprendizaje continuo y colaboración en proyectos variados.</p>
+                        <div class="timeline-tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>PHP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="proyectos" class="projects">
+        <div class="container">
+            <h2 class="section-title">Mis <span class="neon-text">Proyectos</span></h2>
+            <p class="section-subtitle">Algunos de mis trabajos destacados</p>
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="mobile">Mobile</button>
+                <button class="filter-btn" data-filter="design">Diseño</button>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card" data-category="web">
+                    <div class="project-image">
+                        <div class="project-number">01</div>
+                        <div class="project-overlay">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Ver Demo</a>
+                            <a href="#" class="project-github"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>E-Commerce Moderno</h3>
+                        <p>Plataforma de comercio electrónico con diseño minimalista y pasarela de pagos integrada.</p>
+                        <div class="project-tags">
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>MongoDB</span>
+                            <span>Stripe</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" data-category="mobile">
+                    <div class="project-image">
+                        <div class="project-number">02</div>
+                        <div class="project-overlay">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Ver Demo</a>
+                            <a href="#" class="project-github"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>App de Fitness</h3>
+                        <p>Aplicación móvil para seguimiento de rutinas de ejercicio y nutrición personalizada.</p>
+                        <div class="project-tags">
+                            <span>React Native</span>
+                            <span>Firebase</span>
+                            <span>Redux</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" data-category="web">
+                    <div class="project-image">
+                        <div class="project-number">03</div>
+                        <div class="project-overlay">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Ver Demo</a>
+                            <a href="#" class="project-github"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>SaaS Dashboard</h3>
+                        <p>Panel de administración para gestión de clientes con analytics en tiempo real.</p>
+                        <div class="project-tags">
+                            <span>Vue.js</span>
+                            <span>Python</span>
+                            <span>PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" data-category="design">
+                    <div class="project-image">
+                        <div class="project-number">04</div>
+                        <div class="project-overlay">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Ver Demo</a>
+                            <a href="#" class="project-github"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Brand Identity</h3>
+                        <p>Sistema de identidad visual completo para startup tecnológica.</p>
+                        <div class="project-tags">
+                            <span>Figma</span>
+                            <span>Illustrator</span>
+                            <span>Branding</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" data-category="web">
+                    <div class="project-image">
+                        <div class="project-number">05</div>
+                        <div class="project-overlay">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Ver Demo</a>
+                            <a href="#" class="project-github"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Social Network</h3>
+                        <p>Plataforma social con chat en tiempo real y feed personalizado.</p>
+                        <div class="project-tags">
+                            <span>Next.js</span>
+                            <span>Socket.io</span>
+                            <span>Redis</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" data-category="mobile">
+                    <div class="project-image">
+                        <div class="project-number">06</div>
+                        <div class="project-overlay">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Ver Demo</a>
+                            <a href="#" class="project-github"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Delivery App</h3>
+                        <p>Aplicación de delivery con tracking en tiempo real y pagos integrados.</p>
+                        <div class="project-tags">
+                            <span>Flutter</span>
+                            <span>Google Maps</span>
+                            <span>Node.js</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonios" class="testimonials">
+        <div class="container">
+            <h2 class="section-title"><span class="neon-text">Testimonios</span></h2>
+            <p class="section-subtitle">Lo que dicen mis clientes</p>
+            <div class="testimonials-slider">
+                <div class="testimonial-card active">
+                    <div class="testimonial-quote">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="testimonial-text">"Excelente trabajo! Juan superó todas nuestras expectativas. El proyecto se entregó a tiempo y con una calidad excepcional. Definitivamente volveremos a trabajar juntos."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>María González</h4>
+                            <p>CEO, TechStartup</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="testimonial-text">"Profesionalismo y creatividad en cada detalle. Juan transformó nuestra visión en una realidad digital impresionante. Su atención al detalle es notable."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Carlos Rodríguez</h4>
+                            <p>Founder, DigitalAgency</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="testimonial-text">"La mejor decisión que tomamos fue contratar a Juan. No solo entregó un producto excelente, sino que también nos enseñó mejores prácticas para el futuro."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Ana Martínez</h4>
+                            <p>CTO, InnovateCorp</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-dots">
+                <span class="dot active" data-index="0"></span>
+                <span class="dot" data-index="1"></span>
+                <span class="dot" data-index="2"></span>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="contact">
+        <div class="container">
+            <h2 class="section-title">Cont<span class="neon-text">acto</span></h2>
+            <p class="section-subtitle">¿Tienes un proyecto en mente? ¡Hablemos!</p>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Información de Contacto</h3>
+                    <p>Estoy disponible para proyectos freelance y colaboraciones. No dudes en contactarme.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <span>contacto@ejemplo.com</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Teléfono</h4>
+                                <span>+34 612 345 678</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Ubicación</h4>
+                                <span>Madrid, España</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Horario</h4>
+                                <span>Lun - Vie: 9:00 - 18:00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
+                        <a href="#" class="social-link" aria-label="Behance"><i class="fab fa-behance"></i></a>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" placeholder="Nombre" required>
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email" required>
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Asunto" required>
+                        <i class="fas fa-heading"></i>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Mensaje" rows="5" required></textarea>
+                        <i class="fas fa-comment"></i>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Enviar Mensaje
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="newsletter-text">
+                    <h3>¿Quieres recibir novedades?</h3>
+                    <p>Suscríbete a mi newsletter para recibir actualizaciones sobre proyectos y artículos.</p>
+                </div>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Tu email" required>
+                    <button type="submit" class="btn btn-primary">Suscribirse</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Registration Section -->
+    <section id="registro" class="registration">
+        <div class="container">
+            <h2 class="section-title" id="authTitle">Iniciar <span class="neon-text">Sesión</span></h2>
+            <p class="section-subtitle" id="authSubtitle">Ingresa para generar tu link de WhatsApp</p>
+            <div class="registration-content">
+                <div class="registration-form-container">
+                    <!-- Login Form -->
+                    <form class="registration-form" id="loginForm">
+                        <div class="form-group">
+                            <label for="loginEmail">Email o Teléfono</label>
+                            <input type="text" id="loginEmail" placeholder="Email o número de teléfono" required>
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">Contraseña</label>
+                            <input type="password" id="loginPassword" placeholder="Tu contraseña" required>
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                        </button>
+                    </form>
+
+                    <!-- Registration Form -->
+                    <form class="registration-form" id="registerForm" style="display: none;">
+                        <div class="form-group">
+                            <label for="userName">Nombre</label>
+                            <input type="text" id="userName" placeholder="Tu nombre" required>
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="form-group">
+                            <label for="userEmail">Email</label>
+                            <input type="email" id="userEmail" placeholder="Tu email" required>
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="form-group">
+                            <label for="userPhone">Número de Teléfono</label>
+                            <input type="tel" id="userPhone" placeholder="Ej: 1234567890 (sin + ni espacios)" required>
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="form-group">
+                            <label for="userPassword">Contraseña</label>
+                            <input type="password" id="userPassword" placeholder="Crea una contraseña" required>
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-user-plus"></i> Crear Cuenta
+                        </button>
+                    </form>
+
+                    <!-- Toggle between login and register -->
+                    <div class="auth-toggle">
+                        <p id="toggleText">¿No tienes cuenta? <a href="#" onclick="toggleAuth('register')">Regístrate</a></p>
+                    </div>
+                    
+                    <!-- User Dashboard (shown after login) -->
+                    <div class="user-dashboard" id="userDashboard" style="display: none;">
+                        <div class="dashboard-header">
+                            <h3>Bienvenido, <span id="dashboardName">Usuario</span></h3>
+                            <p>Tu email: <span id="dashboardEmail">email@example.com</span></p>
+                        </div>
+                        
+                        <div class="dashboard-actions">
+                            <button class="btn btn-primary" onclick="showLinkCreation()">
+                                <i class="fas fa-plus-circle"></i> Crear Nuevo Link
+                            </button>
+                            <button class="btn btn-glass" onclick="logout()">
+                                <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                            </button>
+                        </div>
+                        
+                        <!-- Link Creation Form -->
+                        <div class="link-creation" id="linkCreation" style="display: none;">
+                            <h4>Crear Link de WhatsApp</h4>
+                            <form class="link-form" id="linkForm">
+                                <div class="form-group">
+                                    <label for="linkDisplayName">Nombre a mostrar</label>
+                                    <input type="text" id="linkDisplayName" placeholder="Nombre que quieres mostrar" required>
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="form-group">
+                                    <label for="linkPhone">Número de Teléfono</label>
+                                    <input type="tel" id="linkPhone" placeholder="Ej: 1234567890 (sin + ni espacios)" required>
+                                    <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div class="form-group">
+                                    <label for="linkPhoto">URL de Foto (opcional)</label>
+                                    <input type="url" id="linkPhoto" placeholder="https://ejemplo.com/foto.jpg">
+                                    <i class="fas fa-camera"></i>
+                                </div>
+                                <div class="photo-preview" id="photoPreview" style="display: none;">
+                                    <img id="previewImage" src="" alt="Preview">
+                                </div>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-share-alt"></i> Generar Link
+                                </button>
+                            </form>
+                        </div>
+                        
+                        <!-- Generated Link -->
+                        <div class="generated-link" id="generatedLink" style="display: none;">
+                            <h3>¡Tu link está listo!</h3>
+                            <div class="link-container">
+                                <input type="text" id="whatsappLink" readonly>
+                                <button class="btn btn-secondary" onclick="copyLink()">
+                                    <i class="fas fa-copy"></i> Copiar
+                                </button>
+                            </div>
+                            <div class="share-buttons">
+                                <button class="share-btn" onclick="shareLink('whatsapp')">
+                                    <i class="fab fa-whatsapp"></i> WhatsApp
+                                </button>
+                                <button class="share-btn" onclick="shareLink('twitter')">
+                                    <i class="fab fa-twitter"></i> Twitter
+                                </button>
+                                <button class="share-btn" onclick="shareLink('facebook')">
+                                    <i class="fab fa-facebook"></i> Facebook
+                                </button>
+                            </div>
+                            <p class="link-expiry">⏰ Este link expira en 24 horas</p>
+                            <div class="link-actions">
+                                <button class="btn btn-glass" onclick="hideLinkCreation()">
+                                    <i class="fas fa-times"></i> Ocultar
+                                </button>
+                                <button class="btn btn-danger" id="deleteLinkBtn" onclick="deleteMyLink()" style="display: none;">
+                                    <i class="fas fa-trash"></i> Borrar mi Link
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Users Directory Section -->
+    <section id="directorio" class="directory">
+        <div class="container">
+            <h2 class="section-title">Directorio de <span class="neon-text">Usuarios</span></h2>
+            <p class="section-subtitle">Usuarios con links activos (expiran en 24h)</p>
+            <div class="directory-grid" id="usersGrid">
+                <!-- Users will be dynamically added here -->
+            </div>
+            <div class="no-users" id="noUsers" style="display: none;">
+                <i class="fas fa-users"></i>
+                <p>Aún no hay usuarios registrados. ¡Sé el primero!</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <h3>Portfolio</h3>
+                        <p>Creando experiencias digitales únicas desde 2016.</p>
+                    </div>
+                    <div class="footer-social">
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#sobre-mi">Sobre Mí</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#proyectos">Proyectos</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Servicios</h4>
+                    <ul>
+                        <li><a href="#">Desarrollo Web</a></li>
+                        <li><a href="#">Desarrollo Mobile</a></li>
+                        <li><a href="#">Diseño UI/UX</a></li>
+                        <li><a href="#">Consultoría</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> contacto@ejemplo.com</li>
+                        <li><i class="fas fa-phone"></i> +34 612 345 678</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Madrid, España</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Portfolio. Todos los derechos reservados. Hecho con <i class="fas fa-heart"></i> y mucho código.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

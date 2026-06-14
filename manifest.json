@@ -1,0 +1,16 @@
+{
+  "name": "CubaCMG - Link x Link",
+  "short_name": "Link x Link",
+  "description": "Plataforma de compartir enlaces de WhatsApp",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0f",
+  "theme_color": "#b026ff",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "192x192",
+      "type": "image/x-icon"
+    }
+  ]
+}

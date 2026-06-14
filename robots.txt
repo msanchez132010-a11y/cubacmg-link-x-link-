@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://cubacmg-link-x-link.vercel.app/sitemap.xml
