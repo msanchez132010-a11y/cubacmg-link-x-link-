@@ -19,5 +19,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/username/cubacmg-link-x-link"
+  },
+  "dependencies": {
+    "pg": "^8.11.3"
   }
 }

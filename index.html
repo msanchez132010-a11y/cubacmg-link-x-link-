@@ -53,13 +53,143 @@
         </div>
     </nav>
 
+    <!-- User Registration Section -->
+    <section id="registro" class="registration">
+        <div class="container">
+            <h2 class="section-title" id="authTitle">Iniciar <span class="neon-text">Sesión</span></h2>
+            <p class="section-subtitle" id="authSubtitle">Ingresa para generar tu link de WhatsApp</p>
+            <div class="registration-content">
+                <div class="registration-form-container">
+                    <!-- Login Form -->
+                    <form class="registration-form" id="loginForm">
+                        <div class="form-group">
+                            <label for="loginEmail">Email o Teléfono</label>
+                            <input type="text" id="loginEmail" placeholder="Email o número de teléfono" required>
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">Contraseña</label>
+                            <input type="password" id="loginPassword" placeholder="Tu contraseña" required>
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                        </button>
+                    </form>
+
+                    <!-- Registration Form -->
+                    <form class="registration-form" id="registerForm" style="display: none;">
+                        <div class="form-group">
+                            <label for="userName">Nombre</label>
+                            <input type="text" id="userName" placeholder="Tu nombre" required>
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="form-group">
+                            <label for="userEmail">Email</label>
+                            <input type="email" id="userEmail" placeholder="Tu email" required>
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="form-group">
+                            <label for="userPhone">Número de Teléfono</label>
+                            <input type="tel" id="userPhone" placeholder="Ej: 1234567890 (sin + ni espacios)" required>
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="form-group">
+                            <label for="userPassword">Contraseña</label>
+                            <input type="password" id="userPassword" placeholder="Crea una contraseña" required>
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-user-plus"></i> Crear Cuenta
+                        </button>
+                    </form>
+                    <div class="toggle-text" id="toggleText">
+                        ¿No tienes cuenta? <a href="#" onclick="toggleAuth('register')">Regístrate</a>
+                    </div>
+                </div>
+                
+                <!-- User Dashboard -->
+                <div class="user-dashboard" id="userDashboard" style="display: none;">
+                    <div class="dashboard-content">
+                        <div class="dashboard-header">
+                            <h3>Bienvenido, <span id="dashboardName">Usuario</span></h3>
+                            <p id="dashboardEmail">usuario@email.com</p>
+                            <button class="btn btn-glass" onclick="logout()">
+                                <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                            </button>
+                        </div>
+                        
+                        <!-- Link Creation Form -->
+                        <div class="link-creation" id="linkCreation" style="display: none;">
+                            <h4>Crear tu Link de WhatsApp</h4>
+                            <form class="link-form" id="linkForm">
+                                <div class="form-group">
+                                    <label for="linkDisplayName">Nombre a mostrar</label>
+                                    <input type="text" id="linkDisplayName" placeholder="Nombre que quieres mostrar" required>
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="form-group">
+                                    <label for="linkPhone">Número de Teléfono</label>
+                                    <input type="tel" id="linkPhone" placeholder="Ej: 1234567890 (sin + ni espacios)" required>
+                                    <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div class="form-group">
+                                    <label for="linkPhoto">URL de Foto (opcional)</label>
+                                    <input type="url" id="linkPhoto" placeholder="https://ejemplo.com/foto.jpg">
+                                    <i class="fas fa-camera"></i>
+                                </div>
+                                <div class="photo-preview" id="photoPreview" style="display: none;">
+                                    <img id="previewImage" src="" alt="Preview">
+                                </div>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-share-alt"></i> Generar Link
+                                </button>
+                            </form>
+                        </div>
+                        
+                        <!-- Generated Link -->
+                        <div class="generated-link" id="generatedLink" style="display: none;">
+                            <h3>¡Tu link está listo!</h3>
+                            <div class="link-container">
+                                <input type="text" id="whatsappLink" readonly>
+                                <button class="btn btn-secondary" onclick="copyLink()">
+                                    <i class="fas fa-copy"></i> Copiar
+                                </button>
+                            </div>
+                            <div class="share-buttons">
+                                <button class="share-btn" onclick="shareLink('whatsapp')">
+                                    <i class="fab fa-whatsapp"></i> WhatsApp
+                                </button>
+                                <button class="share-btn" onclick="shareLink('twitter')">
+                                    <i class="fab fa-twitter"></i> Twitter
+                                </button>
+                                <button class="share-btn" onclick="shareLink('facebook')">
+                                    <i class="fab fa-facebook"></i> Facebook
+                                </button>
+                            </div>
+                            <p class="link-expiry">⏰ Este link expira en 24 horas</p>
+                            <div class="link-actions">
+                                <button class="btn btn-glass" onclick="hideLinkCreation()">
+                                    <i class="fas fa-times"></i> Ocultar
+                                </button>
+                                <button class="btn btn-danger" id="deleteLinkBtn" onclick="deleteMyLink()" style="display: none;">
+                                    <i class="fas fa-trash"></i> Borrar mi Link
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="inicio" class="hero">
         <div class="hero-content">
             <div class="hero-badge">
                 <span class="badge-dot"></span>
                 <span>Disponible para proyectos</span>
             </div>
-            <h1 class="glitch" data-text="Hola, Soy Desarrollador">Hola, Soy Desarrollador</h1>
+            <h1 class="glitch" data-text="Bienvenido">Bienvenido</h1>
             <p class="hero-subtitle"><span class="typing-text"></span></p>
             <div class="hero-buttons">
                 <a href="#proyectos" class="btn btn-primary">
@@ -583,87 +713,6 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonios" class="testimonials">
-        <div class="container">
-            <h2 class="section-title"><span class="neon-text">Testimonios</span></h2>
-            <p class="section-subtitle">Lo que dicen mis clientes</p>
-            <div class="testimonials-slider">
-                <div class="testimonial-card active">
-                    <div class="testimonial-quote">
-                        <i class="fas fa-quote-left"></i>
-                    </div>
-                    <p class="testimonial-text">"Excelente trabajo! Juan superó todas nuestras expectativas. El proyecto se entregó a tiempo y con una calidad excepcional. Definitivamente volveremos a trabajar juntos."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="author-info">
-                            <h4>María González</h4>
-                            <p>CEO, TechStartup</p>
-                        </div>
-                    </div>
-                    <div class="testimonial-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-quote">
-                        <i class="fas fa-quote-left"></i>
-                    </div>
-                    <p class="testimonial-text">"Profesionalismo y creatividad en cada detalle. Juan transformó nuestra visión en una realidad digital impresionante. Su atención al detalle es notable."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="author-info">
-                            <h4>Carlos Rodríguez</h4>
-                            <p>Founder, DigitalAgency</p>
-                        </div>
-                    </div>
-                    <div class="testimonial-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-quote">
-                        <i class="fas fa-quote-left"></i>
-                    </div>
-                    <p class="testimonial-text">"La mejor decisión que tomamos fue contratar a Juan. No solo entregó un producto excelente, sino que también nos enseñó mejores prácticas para el futuro."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="author-info">
-                            <h4>Ana Martínez</h4>
-                            <p>CTO, InnovateCorp</p>
-                        </div>
-                    </div>
-                    <div class="testimonial-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-dots">
-                <span class="dot active" data-index="0"></span>
-                <span class="dot" data-index="1"></span>
-                <span class="dot" data-index="2"></span>
-            </div>
-        </div>
-    </section>
-
     <section id="contacto" class="contact">
         <div class="container">
             <h2 class="section-title">Cont<span class="neon-text">acto</span></h2>
@@ -762,142 +811,6 @@
         </div>
     </section>
 
-    <!-- User Registration Section -->
-    <section id="registro" class="registration">
-        <div class="container">
-            <h2 class="section-title" id="authTitle">Iniciar <span class="neon-text">Sesión</span></h2>
-            <p class="section-subtitle" id="authSubtitle">Ingresa para generar tu link de WhatsApp</p>
-            <div class="registration-content">
-                <div class="registration-form-container">
-                    <!-- Login Form -->
-                    <form class="registration-form" id="loginForm">
-                        <div class="form-group">
-                            <label for="loginEmail">Email o Teléfono</label>
-                            <input type="text" id="loginEmail" placeholder="Email o número de teléfono" required>
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="form-group">
-                            <label for="loginPassword">Contraseña</label>
-                            <input type="password" id="loginPassword" placeholder="Tu contraseña" required>
-                            <i class="fas fa-lock"></i>
-                        </div>
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
-                        </button>
-                    </form>
-
-                    <!-- Registration Form -->
-                    <form class="registration-form" id="registerForm" style="display: none;">
-                        <div class="form-group">
-                            <label for="userName">Nombre</label>
-                            <input type="text" id="userName" placeholder="Tu nombre" required>
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="form-group">
-                            <label for="userEmail">Email</label>
-                            <input type="email" id="userEmail" placeholder="Tu email" required>
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="form-group">
-                            <label for="userPhone">Número de Teléfono</label>
-                            <input type="tel" id="userPhone" placeholder="Ej: 1234567890 (sin + ni espacios)" required>
-                            <i class="fab fa-whatsapp"></i>
-                        </div>
-                        <div class="form-group">
-                            <label for="userPassword">Contraseña</label>
-                            <input type="password" id="userPassword" placeholder="Crea una contraseña" required>
-                            <i class="fas fa-lock"></i>
-                        </div>
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-user-plus"></i> Crear Cuenta
-                        </button>
-                    </form>
-
-                    <!-- Toggle between login and register -->
-                    <div class="auth-toggle">
-                        <p id="toggleText">¿No tienes cuenta? <a href="#" onclick="toggleAuth('register')">Regístrate</a></p>
-                    </div>
-                    
-                    <!-- User Dashboard (shown after login) -->
-                    <div class="user-dashboard" id="userDashboard" style="display: none;">
-                        <div class="dashboard-header">
-                            <h3>Bienvenido, <span id="dashboardName">Usuario</span></h3>
-                            <p>Tu email: <span id="dashboardEmail">email@example.com</span></p>
-                        </div>
-                        
-                        <div class="dashboard-actions">
-                            <button class="btn btn-primary" onclick="showLinkCreation()">
-                                <i class="fas fa-plus-circle"></i> Crear Nuevo Link
-                            </button>
-                            <button class="btn btn-glass" onclick="logout()">
-                                <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
-                            </button>
-                        </div>
-                        
-                        <!-- Link Creation Form -->
-                        <div class="link-creation" id="linkCreation" style="display: none;">
-                            <h4>Crear Link de WhatsApp</h4>
-                            <form class="link-form" id="linkForm">
-                                <div class="form-group">
-                                    <label for="linkDisplayName">Nombre a mostrar</label>
-                                    <input type="text" id="linkDisplayName" placeholder="Nombre que quieres mostrar" required>
-                                    <i class="fas fa-user"></i>
-                                </div>
-                                <div class="form-group">
-                                    <label for="linkPhone">Número de Teléfono</label>
-                                    <input type="tel" id="linkPhone" placeholder="Ej: 1234567890 (sin + ni espacios)" required>
-                                    <i class="fab fa-whatsapp"></i>
-                                </div>
-                                <div class="form-group">
-                                    <label for="linkPhoto">URL de Foto (opcional)</label>
-                                    <input type="url" id="linkPhoto" placeholder="https://ejemplo.com/foto.jpg">
-                                    <i class="fas fa-camera"></i>
-                                </div>
-                                <div class="photo-preview" id="photoPreview" style="display: none;">
-                                    <img id="previewImage" src="" alt="Preview">
-                                </div>
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fas fa-share-alt"></i> Generar Link
-                                </button>
-                            </form>
-                        </div>
-                        
-                        <!-- Generated Link -->
-                        <div class="generated-link" id="generatedLink" style="display: none;">
-                            <h3>¡Tu link está listo!</h3>
-                            <div class="link-container">
-                                <input type="text" id="whatsappLink" readonly>
-                                <button class="btn btn-secondary" onclick="copyLink()">
-                                    <i class="fas fa-copy"></i> Copiar
-                                </button>
-                            </div>
-                            <div class="share-buttons">
-                                <button class="share-btn" onclick="shareLink('whatsapp')">
-                                    <i class="fab fa-whatsapp"></i> WhatsApp
-                                </button>
-                                <button class="share-btn" onclick="shareLink('twitter')">
-                                    <i class="fab fa-twitter"></i> Twitter
-                                </button>
-                                <button class="share-btn" onclick="shareLink('facebook')">
-                                    <i class="fab fa-facebook"></i> Facebook
-                                </button>
-                            </div>
-                            <p class="link-expiry">⏰ Este link expira en 24 horas</p>
-                            <div class="link-actions">
-                                <button class="btn btn-glass" onclick="hideLinkCreation()">
-                                    <i class="fas fa-times"></i> Ocultar
-                                </button>
-                                <button class="btn btn-danger" id="deleteLinkBtn" onclick="deleteMyLink()" style="display: none;">
-                                    <i class="fas fa-trash"></i> Borrar mi Link
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Users Directory Section -->
     <section id="directorio" class="directory">
         <div class="container">
@@ -909,6 +822,87 @@
             <div class="no-users" id="noUsers" style="display: none;">
                 <i class="fas fa-users"></i>
                 <p>Aún no hay usuarios registrados. ¡Sé el primero!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonios" class="testimonials">
+        <div class="container">
+            <h2 class="section-title"><span class="neon-text">Testimonios</span></h2>
+            <p class="section-subtitle">Lo que dicen mis clientes</p>
+            <div class="testimonials-slider">
+                <div class="testimonial-card active">
+                    <div class="testimonial-quote">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="testimonial-text">"Excelente trabajo! Juan superó todas nuestras expectativas. El proyecto se entregó a tiempo y con una calidad excepcional. Definitivamente volveremos a trabajar juntos."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>María González</h4>
+                            <p>CEO, TechStartup</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="testimonial-text">"Profesionalismo y creatividad en cada detalle. Juan transformó nuestra visión en una realidad digital impresionante. Su atención al detalle es notable."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Carlos Rodríguez</h4>
+                            <p>Founder, DigitalAgency</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="testimonial-text">"La mejor decisión que tomamos fue contratar a Juan. No solo entregó un producto excelente, sino que también nos enseñó mejores prácticas para el futuro."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Ana Martínez</h4>
+                            <p>CTO, InnovateCorp</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-dots">
+                <span class="dot active" data-index="0"></span>
+                <span class="dot" data-index="1"></span>
+                <span class="dot" data-index="2"></span>
             </div>
         </div>
     </section>

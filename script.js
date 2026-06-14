@@ -474,19 +474,36 @@ const toggleText = document.getElementById('toggleText');
 const dashboardName = document.getElementById('dashboardName');
 const dashboardEmail = document.getElementById('dashboardEmail');
 
-// Load users from localStorage on page load
-let users = JSON.parse(localStorage.getItem('whatsappUsers')) || [];
+// Load users from Netlify Functions
+let users = [];
 let currentUser = JSON.parse(localStorage.getItem('currentUser')) || null;
 
-// Remove expired users (older than 24 hours)
-users = users.filter(user => {
-    if (!user.createdAt) return true; // Keep users without links
-    const createdAt = new Date(user.createdAt);
-    const now = new Date();
-    const hoursDiff = (now - createdAt) / (1000 * 60 * 60);
-    return hoursDiff < 24;
-});
-localStorage.setItem('whatsappUsers', JSON.stringify(users));
+// Load users from Netlify Functions
+async function loadUsersFromNetlify() {
+    try {
+        const response = await fetch('/.netlify/functions/get-users');
+        const data = await response.json();
+        
+        users = data.map(link => ({
+            id: link.user_id,
+            name: link.name,
+            email: link.email,
+            link: link.link,
+            displayName: link.display_name,
+            photo: link.photo,
+            phone: link.phone,
+            likes: link.likes,
+            createdAt: link.created_at
+        }));
+        
+        displayUsers();
+    } catch (error) {
+        console.error('Error loading users:', error);
+    }
+}
+
+// Load users on page load
+loadUsersFromNetlify();
 
 // Check if user is logged in
 if (currentUser) {
@@ -519,9 +536,6 @@ if (directoryLink) {
     directoryLink.style.display = currentUser ? 'block' : 'none';
 }
 
-// Display users on page load
-displayUsers();
-
 // Toggle between login and register
 function toggleAuth(mode) {
     if (mode === 'register') {
@@ -541,53 +555,58 @@ function toggleAuth(mode) {
 
 // Login form submission
 if (loginForm) {
-    loginForm.addEventListener('submit', (e) => {
+    loginForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
         const emailOrPhone = document.getElementById('loginEmail').value;
         const password = document.getElementById('loginPassword').value;
         
-        // Find user by email or phone
-        const user = users.find(u => 
-            u.email === emailOrPhone || u.phone === emailOrPhone
-        );
-        
-        if (!user) {
-            alert('Usuario no encontrado. Por favor, regístrate primero.');
-            return;
+        try {
+            const response = await fetch('/.netlify/functions/login', {
+                method: 'POST',
+                body: JSON.stringify({ emailOrPhone, password })
+            });
+            
+            const data = await response.json();
+            
+            if (response.status !== 200) {
+                alert(data.error || 'Error al iniciar sesión');
+                return;
+            }
+            
+            // Login successful
+            currentUser = data;
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            
+            showUserDashboard(currentUser);
+            
+            // Show directory section
+            const directorySection = document.getElementById('directorio');
+            if (directorySection) {
+                directorySection.style.display = 'block';
+            }
+            
+            // Show directory link in navbar
+            const directoryLink = document.querySelector('a[href="#directorio"]');
+            if (directoryLink) {
+                directoryLink.style.display = 'block';
+            }
+            
+            // Reload users from Netlify
+            await loadUsersFromNetlify();
+            
+            loginForm.reset();
+            alert('¡Sesión iniciada correctamente!');
+        } catch (error) {
+            console.error('Error en login:', error);
+            alert('Error al iniciar sesión. Por favor, intenta nuevamente.');
         }
-        
-        if (user.password !== password) {
-            alert('Contraseña incorrecta.');
-            return;
-        }
-        
-        // Login successful
-        currentUser = user;
-        localStorage.setItem('currentUser', JSON.stringify(currentUser));
-        
-        showUserDashboard(currentUser);
-        
-        // Show directory section
-        const directorySection = document.getElementById('directorio');
-        if (directorySection) {
-            directorySection.style.display = 'block';
-        }
-        
-        // Show directory link in navbar
-        const directoryLink = document.querySelector('a[href="#directorio"]');
-        if (directoryLink) {
-            directoryLink.style.display = 'block';
-        }
-        
-        loginForm.reset();
-        alert('¡Sesión iniciada correctamente!');
     });
 }
 
 // Registration form submission
 if (registerForm) {
-    registerForm.addEventListener('submit', (e) => {
+    registerForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
         const name = document.getElementById('userName').value;
@@ -603,55 +622,45 @@ if (registerForm) {
             return;
         }
         
-        // Check if email or phone already exists
-        const existingUser = users.find(user => 
-            user.email === email || user.phone === cleanPhone
-        );
-        
-        if (existingUser) {
-            alert('Este email o número de teléfono ya está registrado');
-            return;
+        try {
+            const response = await fetch('/.netlify/functions/register', {
+                method: 'POST',
+                body: JSON.stringify({ name, email, phone: cleanPhone, password })
+            });
+            
+            const data = await response.json();
+            
+            if (response.status !== 200) {
+                alert(data.error || 'Error al crear cuenta');
+                return;
+            }
+            
+            // Auto login after registration
+            currentUser = data;
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            
+            showUserDashboard(currentUser);
+            
+            // Show directory section
+            const directorySection = document.getElementById('directorio');
+            if (directorySection) {
+                directorySection.style.display = 'block';
+            }
+            
+            // Show directory link in navbar
+            const directoryLink = document.querySelector('a[href="#directorio"]');
+            if (directoryLink) {
+                directoryLink.style.display = 'block';
+            }
+            
+            // Reset form
+            registerForm.reset();
+            
+            alert('¡Cuenta creada exitosamente! Ahora puedes crear tu link de WhatsApp.');
+        } catch (error) {
+            console.error('Error en registro:', error);
+            alert('Error al crear cuenta. Por favor, intenta nuevamente.');
         }
-        
-        // Create user object WITHOUT link initially
-        const newUser = {
-            id: Date.now(),
-            name: name,
-            email: email,
-            phone: cleanPhone,
-            password: password,
-            link: null,
-            createdAt: null,
-            likes: 0,
-            likedBy: []
-        };
-        
-        // Save to localStorage
-        users.push(newUser);
-        localStorage.setItem('whatsappUsers', JSON.stringify(users));
-        
-        // Auto login after registration
-        currentUser = newUser;
-        localStorage.setItem('currentUser', JSON.stringify(currentUser));
-        
-        showUserDashboard(currentUser);
-        
-        // Show directory section
-        const directorySection = document.getElementById('directorio');
-        if (directorySection) {
-            directorySection.style.display = 'block';
-        }
-        
-        // Show directory link in navbar
-        const directoryLink = document.querySelector('a[href="#directorio"]');
-        if (directoryLink) {
-            directoryLink.style.display = 'block';
-        }
-        
-        // Reset form
-        registerForm.reset();
-        
-        alert('¡Cuenta creada exitosamente! Ahora puedes crear tu link de WhatsApp.');
     });
 }
 
@@ -716,7 +725,7 @@ function hideLinkCreation() {
 
 // Link form submission
 if (linkForm) {
-    linkForm.addEventListener('submit', (e) => {
+    linkForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
         const displayName = document.getElementById('linkDisplayName').value;
@@ -734,52 +743,66 @@ if (linkForm) {
         // Generate WhatsApp link
         const waLink = `https://wa.me/${cleanPhone}`;
         
-        // Update user with link, display name, photo and timestamp
-        currentUser.link = waLink;
-        currentUser.phone = cleanPhone;
-        currentUser.displayName = displayName;
-        currentUser.photo = photo || null;
-        currentUser.createdAt = new Date().toISOString();
-        
-        // Update in users array
-        const userIndex = users.findIndex(u => u.id === currentUser.id);
-        if (userIndex !== -1) {
-            users[userIndex] = currentUser;
+        try {
+            const response = await fetch('/.netlify/functions/create-link', {
+                method: 'POST',
+                body: JSON.stringify({
+                    userId: currentUser.id,
+                    displayName,
+                    phone: cleanPhone,
+                    photo: photo || null,
+                    link: waLink
+                })
+            });
+            
+            const data = await response.json();
+            
+            if (response.status !== 200) {
+                alert(data.error || 'Error al crear link');
+                return;
+            }
+            
+            // Update current user with link info
+            currentUser.link = waLink;
+            currentUser.phone = cleanPhone;
+            currentUser.displayName = displayName;
+            currentUser.photo = photo || null;
+            currentUser.createdAt = data.created_at;
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            
+            // Show generated link
+            if (linkCreation) {
+                linkCreation.style.display = 'none';
+            }
+            
+            if (generatedLink) {
+                generatedLink.style.display = 'block';
+            }
+            
+            if (whatsappLink) {
+                whatsappLink.value = waLink;
+            }
+            
+            // Show delete button
+            const deleteLinkBtn = document.getElementById('deleteLinkBtn');
+            if (deleteLinkBtn) {
+                deleteLinkBtn.style.display = 'inline-flex';
+            }
+            
+            // Reload users from Netlify
+            await loadUsersFromNetlify();
+            
+            // Reset form
+            linkForm.reset();
+            if (document.getElementById('photoPreview')) {
+                document.getElementById('photoPreview').style.display = 'none';
+            }
+            
+            alert('¡Link creado exitosamente! Comparte tu link, expira en 24 horas.');
+        } catch (error) {
+            console.error('Error al crear link:', error);
+            alert('Error al crear link. Por favor, intenta nuevamente.');
         }
-        
-        // Save to localStorage
-        localStorage.setItem('whatsappUsers', JSON.stringify(users));
-        localStorage.setItem('currentUser', JSON.stringify(currentUser));
-        
-        // Show generated link
-        if (linkCreation) {
-            linkCreation.style.display = 'none';
-        }
-        
-        if (generatedLink) {
-            generatedLink.style.display = 'block';
-        }
-        
-        if (whatsappLink) {
-            whatsappLink.value = waLink;
-        }
-        
-        // Show delete button
-        const deleteLinkBtn = document.getElementById('deleteLinkBtn');
-        if (deleteLinkBtn) {
-            deleteLinkBtn.style.display = 'inline-flex';
-        }
-        
-        // Update directory
-        displayUsers();
-        
-        // Reset form
-        linkForm.reset();
-        if (document.getElementById('photoPreview')) {
-            document.getElementById('photoPreview').style.display = 'none';
-        }
-        
-        alert('¡Link creado exitosamente! Comparte tu link, expira en 24 horas.');
     });
 }
 
@@ -881,58 +904,57 @@ function logout() {
 }
 
 // Delete user's own link
-function deleteMyLink() {
+async function deleteMyLink() {
     if (!currentUser || !currentUser.link) {
         alert('No tienes un link activo para eliminar');
         return;
     }
     
     if (confirm('¿Estás seguro de eliminar tu link de WhatsApp?')) {
-        // Remove link from current user
-        currentUser.link = null;
-        currentUser.displayName = null;
-        currentUser.photo = null;
-        currentUser.createdAt = null;
-        
-        // Update in users array
-        const userIndex = users.findIndex(u => u.id === currentUser.id);
-        if (userIndex !== -1) {
-            users[userIndex] = currentUser;
+        try {
+            const response = await fetch('/.netlify/functions/delete-link', {
+                method: 'DELETE',
+                body: JSON.stringify({ userId: currentUser.id })
+            });
+            
+            const data = await response.json();
+            
+            if (response.status !== 200) {
+                alert(data.error || 'Error al eliminar link');
+                return;
+            }
+            
+            // Remove link from current user
+            currentUser.link = null;
+            currentUser.displayName = null;
+            currentUser.photo = null;
+            currentUser.createdAt = null;
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            
+            // Hide generated link
+            if (generatedLink) {
+                generatedLink.style.display = 'none';
+            }
+            
+            // Hide delete button
+            const deleteLinkBtn = document.getElementById('deleteLinkBtn');
+            if (deleteLinkBtn) {
+                deleteLinkBtn.style.display = 'none';
+            }
+            
+            // Reload users from Netlify
+            await loadUsersFromNetlify();
+            
+            alert('Tu link ha sido eliminado correctamente');
+        } catch (error) {
+            console.error('Error al eliminar link:', error);
+            alert('Error al eliminar link. Por favor, intenta nuevamente.');
         }
-        
-        // Save to localStorage
-        localStorage.setItem('whatsappUsers', JSON.stringify(users));
-        localStorage.setItem('currentUser', JSON.stringify(currentUser));
-        
-        // Hide generated link
-        if (generatedLink) {
-            generatedLink.style.display = 'none';
-        }
-        
-        // Hide delete button
-        const deleteLinkBtn = document.getElementById('deleteLinkBtn');
-        if (deleteLinkBtn) {
-            deleteLinkBtn.style.display = 'none';
-        }
-        
-        // Update directory
-        displayUsers();
-        
-        alert('Tu link ha sido eliminado correctamente');
     }
 }
 
 // Like user function
-function likeUser(userId) {
-    const user = users.find(u => u.id === userId);
-    if (!user) return;
-    
-    // Check if current user already liked
-    if (currentUser && user.likedBy && user.likedBy.includes(currentUser.id)) {
-        alert('Ya has dado like a este usuario');
-        return;
-    }
-    
+async function likeUser(userId) {
     // Only logged in users can like
     if (!currentUser) {
         alert('Debes iniciar sesión para dar like');
@@ -945,26 +967,25 @@ function likeUser(userId) {
         return;
     }
     
-    // Add like
-    user.likes += 1;
-    
-    // Track who liked
-    if (!user.likedBy) {
-        user.likedBy = [];
+    try {
+        const response = await fetch('/.netlify/functions/like', {
+            method: 'POST',
+            body: JSON.stringify({ userId: currentUser.id, linkId: userId })
+        });
+        
+        const data = await response.json();
+        
+        if (response.status !== 200) {
+            alert(data.error || 'Error al dar like');
+            return;
+        }
+        
+        // Reload users from Netlify
+        await loadUsersFromNetlify();
+    } catch (error) {
+        console.error('Error al dar like:', error);
+        alert('Error al dar like. Por favor, intenta nuevamente.');
     }
-    user.likedBy.push(currentUser.id);
-    
-    // Update in users array
-    const userIndex = users.findIndex(u => u.id === userId);
-    if (userIndex !== -1) {
-        users[userIndex] = user;
-    }
-    
-    // Update localStorage
-    localStorage.setItem('whatsappUsers', JSON.stringify(users));
-    
-    // Update display
-    displayUsers();
 }
 
 // Get time remaining until expiration
